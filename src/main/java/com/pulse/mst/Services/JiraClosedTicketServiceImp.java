@@ -148,7 +148,7 @@ public class JiraClosedTicketServiceImp implements JiraClosedTicketService {
                         jiraClosedTicket.setTimeSpent("");
                     }
 
-                    String inputUpdatedDate = item.getAsJsonObject().get("fields").getAsJsonObject().get("created").getAsString();
+                    String inputUpdatedDate = item.getAsJsonObject().get("fields").getAsJsonObject().get("updated").getAsString();
                     String outputUpdatedDate = inputUpdatedDate.substring(0, 19);
                     jiraClosedTicket.setUpdated(LocalDateTime.parse(outputUpdatedDate));
 

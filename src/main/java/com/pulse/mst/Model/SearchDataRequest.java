@@ -12,6 +12,7 @@ public class SearchDataRequest {
     List<String>  selectedStatus;
     List<String>  selectedProject;
     List<String>  selectedDateRange;
-
+    List<String>  selectedIssueType;
+    List<String>  selectedAge;
 
 }

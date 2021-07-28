@@ -159,7 +159,7 @@ public class JiraOpenTicketServiceImp implements JiraOpenTicketService {
                         jiraOpenTicket.setTimeSpent("");
                     }
 
-                    String inputUpdatedDate = item.getAsJsonObject().get("fields").getAsJsonObject().get("created").getAsString();
+                    String inputUpdatedDate = item.getAsJsonObject().get("fields").getAsJsonObject().get("updated").getAsString();
                     String outputUpdatedDate = inputUpdatedDate.substring(0, 19);
                     jiraOpenTicket.setUpdated(LocalDateTime.parse(outputUpdatedDate));
 

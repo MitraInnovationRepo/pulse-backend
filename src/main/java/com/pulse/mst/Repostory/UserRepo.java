@@ -22,8 +22,8 @@ public interface UserRepo extends JpaRepository<User,Integer> {
 
     @Query("SELECT m FROM User m WHERE m.userName=?1 AND m.id=?2")
     List<User> findUserByName(@Param("userName") String userName,@Param("userId") Integer userId);
-
     @Query("SELECT m FROM User m WHERE m.userName=?1 AND m.id=?2 AND m.password=?3")
+
     List<User> FindCorrectPasswordUser(@Param("userName") String userName,@Param("userId") Integer userId,@Param("password") String password);
     @Query("SELECT m FROM User m WHERE m.status=?1")
     List<User> findActiveUser(@Param("status") Integer status);

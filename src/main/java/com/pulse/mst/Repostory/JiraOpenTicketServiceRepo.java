@@ -114,4 +114,11 @@ public interface JiraOpenTicketServiceRepo extends JpaRepository <JiraOpenTicket
 //    @Query(value = "select t.project_name,count(t.key) all_issues from pulse.fn_get_ticket_details(:p_project_name,null,null,:p_status) t where  t.current_status not in('Done','Completed','Resolved','Closed') group by  t.project_name order by 1 asc", nativeQuery = true)
 //    List<Object[]> GetPriority2(@Param("p_project_name") String  p_project_name, @Param("p_status") String  p_status);
 
+    //Ageing report Query
+    @Query(value = "select * from  pulse.fn_get_ticket_age_details(:p_project_name,:p_start_date,:p_end_date,:p_status,:issueType,:ageName)", nativeQuery = true)
+    List<Object[]> GetSearchAgeReport(@Param("p_project_name") String  p_project_name, @Param("p_start_date") LocalDate p_start_date, @Param("p_end_date") LocalDate p_end_date, @Param("p_status") String  p_status, @Param("issueType") String  issueType, @Param("ageName") String  ageName);
+//Ageing report Query
+    @Query(value = "select * from  pulse.fn_get_ticket_age_details(:p_project_name,null,null,:p_status,:issueType,:ageName)", nativeQuery = true)
+    List<Object[]> GetSearchAgeReportBynullDate(@Param("p_project_name") String  p_project_name, @Param("p_status") String  p_status, @Param("issueType") String  issueType, @Param("ageName") String  ageName);
+
 }
