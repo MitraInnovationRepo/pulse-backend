@@ -24,6 +24,7 @@ public class AuditActivityServiceServiceImp implements AuditActivityService {
         List<Audit> GET_OPEN_INCIDENT_LAST_DETAILS = auditRepo.top1TicketDetails("GetOpenTickets");
         List<Audit> GET_CLOSED_INCIDENT_LAST_DETAILS = auditRepo.top1TicketDetails("GetClosedTickets");
         List<Audit> GET_IT_INCIDENT_LAST_DETAILS = auditRepo.top1TicketDetails("IT_GetOpenTickets");
+        List<Audit> GET_Ortom8_INCIDENT_LAST_DETAILS = auditRepo.top1TicketDetails("Ortom8_GetOpenTickets");
         Audit auditOpen =new Audit();
         Audit auditClosed =new Audit();
         Audit it =new Audit();
@@ -53,6 +54,15 @@ public class AuditActivityServiceServiceImp implements AuditActivityService {
             it.setActivityName(GET_IT_INCIDENT_LAST_DETAILS.get(0).getActivityName());
             it.setJobStart(GET_IT_INCIDENT_LAST_DETAILS.get(0).getJobStart());
             it.setJobEnd(GET_IT_INCIDENT_LAST_DETAILS.get(0).getJobEnd());
+            ArrayData.add(it);
+        }
+        if(!GET_Ortom8_INCIDENT_LAST_DETAILS.isEmpty()){
+            it.setMessage(GET_Ortom8_INCIDENT_LAST_DETAILS.get(0).getMessage());
+            it.setId(GET_Ortom8_INCIDENT_LAST_DETAILS.get(0).getId());
+            it.setStatus(GET_Ortom8_INCIDENT_LAST_DETAILS.get(0).getStatus());
+            it.setActivityName(GET_Ortom8_INCIDENT_LAST_DETAILS.get(0).getActivityName());
+            it.setJobStart(GET_Ortom8_INCIDENT_LAST_DETAILS.get(0).getJobStart());
+            it.setJobEnd(GET_Ortom8_INCIDENT_LAST_DETAILS.get(0).getJobEnd());
             ArrayData.add(it);
         }
         logger.info("ActivityAuditController- getLastDetails - success");
