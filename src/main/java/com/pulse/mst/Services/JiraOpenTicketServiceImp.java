@@ -83,7 +83,8 @@ public class JiraOpenTicketServiceImp implements JiraOpenTicketService {
                     //convert to json
                     JsonObject jsonObject = new JsonParser().parse(response.getBody()).getAsJsonObject();
                     queryOutputItemsCount = jsonObject.get("issues").getAsJsonArray().size();
-//                System.out.println("json data"+jsonObject);
+                // System.out.println("json data=="+jsonObject);
+               // System.out.println("json data=="+jsonObject.get("issues").getAsJsonArray().get(1));
 
                 int n=startAt+0;
                 for(JsonElement item:jsonObject.get("issues").getAsJsonArray()){
@@ -158,6 +159,14 @@ public class JiraOpenTicketServiceImp implements JiraOpenTicketService {
                     }else {
                         jiraOpenTicket.setTimeSpent("");
                     }
+
+  //                  if(!item.getAsJsonObject().get("fields").getAsJsonObject().get("customfield_10112").isJsonNull()){
+                        //jiraOpenTicket.setTimeSpent(item.getAsJsonObject().get("fields").getAsJsonObject().get("customfield_10112").getAsString());
+  //                      System.out.println("value =="+item.getAsJsonObject().get("fields").getAsJsonObject().get("customfield_10112").getAsJsonObject().get("value").getAsString());
+
+   //                 }else {
+    //                    System.out.println("empy value  ==");
+    //                }
 
                     String inputUpdatedDate = item.getAsJsonObject().get("fields").getAsJsonObject().get("updated").getAsString();
                     String outputUpdatedDate = inputUpdatedDate.substring(0, 19);
